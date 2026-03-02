@@ -751,3 +751,75 @@ img { display: block; max-width: 100%; }
     .footer-heading { font-size: 1.6rem; }
     .footer-logo-text { font-size: 1.5rem; letter-spacing: 2px; }
 }
+
+/* ================================
+   PROJECTS PAGE
+   ================================ */
+
+/* Page Hero */
+.projects-hero {
+    padding: 160px 0 60px;
+    border-bottom: 1px solid var(--border);
+}
+.projects-back {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.72rem; color: var(--text-3);
+    letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 32px;
+    transition: color 0.3s;
+    cursor: none;
+}
+.projects-back:hover { color: var(--text); }
+.projects-back svg { transition: transform 0.3s; }
+.projects-back:hover svg { transform: translateX(-4px); }
+.projects-hero-title {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 16px;
+}
+.projects-hero-sub {
+    font-size: 1.05rem;
+    color: var(--text-2);
+    line-height: 1.7;
+    max-width: 560px;
+    font-weight: 300;
+}
+
+/* Projects Page Grid */
+.projects-section { padding-top: 80px; }
+.projects-page-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+/* Responsive — Projects Page */
+@media (max-width: 1024px) {
+    .projects-hero { padding: 130px 0 50px; }
+    .projects-back { cursor: pointer; }
+    .projects-page-grid .project-card { cursor: pointer; }
+    .projects-page-grid .project-card:hover { transform: none; box-shadow: none; }
+    .projects-page-grid .project-card:active { transform: scale(0.98); }
+}
+
+@media (max-width: 768px) {
+    .projects-hero { padding: 110px 0 40px; }
+    .projects-hero-title {
+        font-size: clamp(1.8rem, 8vw, 2.6rem);
+        letter-spacing: -1px;
+    }
+    .projects-hero-sub { font-size: 0.92rem; }
+    .projects-back { margin-bottom: 24px; cursor: auto; }
+    .projects-page-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .projects-page-grid .project-card { cursor: auto; }
+}
+
+@media (max-width: 480px) {
+    .projects-hero { padding: 100px 0 32px; }
+    .projects-hero-title { margin-bottom: 12px; }
+    .projects-hero-sub { font-size: 0.85rem; }
+}
