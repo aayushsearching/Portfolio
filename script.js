@@ -63,15 +63,18 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', updateBar, { passive: true });
     updateBar();
 
-    // ---- Smooth Scroll ----
+    // ---- Smooth Scroll (desktop only — don't block touch) ----
     let cs = window.scrollY, ts = window.scrollY, scrolling = false;
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-    window.addEventListener('wheel', e => {
-        e.preventDefault();
-        ts += e.deltaY;
-        ts = Math.max(0, Math.min(ts, document.documentElement.scrollHeight - window.innerHeight));
-        if (!scrolling) { scrolling = true; sLoop(); }
-    }, { passive: false });
+    if (!isTouch) {
+        window.addEventListener('wheel', e => {
+            e.preventDefault();
+            ts += e.deltaY;
+            ts = Math.max(0, Math.min(ts, document.documentElement.scrollHeight - window.innerHeight));
+            if (!scrolling) { scrolling = true; sLoop(); }
+        }, { passive: false });
+    }
 
     function sLoop() {
         cs += (ts - cs) * 0.1;
